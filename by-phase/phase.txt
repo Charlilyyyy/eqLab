@@ -1,0 +1,130 @@
+STOCK-MARKET (SIGNALIST) — 13-PHASE REDO ROADMAP
+==================================================
+
+Phase 1: Idea & Vision
+----------------------
+- Define the problem: investors need real-time stock data, watchlists, and price alerts in one place
+- Name the product (e.g. Signalist) and write a one-paragraph elevator pitch
+- List target users (retail investors, day traders, portfolio trackers)
+- Sketch core value props: live market data, personalized watchlists, intelligent alerts, AI insights
+- Decide scope for v1 vs future features (portfolio tracking, social, mobile app, etc.)
+- Deliverable: idea brief (problem, audience, goals, non-goals)
+
+
+Phase 2: Research & Requirements
+--------------------------------
+- Study competitors (Yahoo Finance, TradingView, Robinhood web, etc.)
+- Map user flows: sign up → browse market → add to watchlist → set alert → receive email
+- Write functional requirements (auth, dashboard, stock detail, watchlist CRUD, alerts)
+- Write non-functional requirements (performance, security, API rate limits, uptime)
+- Identify external services: Finnhub, MongoDB, Better Auth, Inngest, Gemini AI, Nodemailer
+- Deliverable: requirements doc + feature checklist
+
+
+Phase 3: Architecture & Tech Stack
+----------------------------------
+- Choose stack: Next.js 15 (App Router), TypeScript, Tailwind CSS, Radix UI
+- Design system architecture: client → Next.js → API routes → MongoDB / external APIs
+- Plan background jobs: Inngest for alert scheduling and AI summaries
+- Draw data flow: user actions, market data fetch, alert trigger → email
+- Define folder structure: app/, components/, lib/, database/, hooks/
+- Deliverable: architecture diagram + tech stack decision record
+
+
+Phase 4: Project Setup & Environment
+------------------------------------
+- Initialize Next.js project with TypeScript and Tailwind
+- Configure ESLint, PostCSS, path aliases (tsconfig)
+- Create .env.example with all required keys (Finnhub, MongoDB, Better Auth, Gemini, Nodemailer)
+- Set up shadcn/ui components (button, input, dialog, table, etc.)
+- Install core dependencies: mongoose, better-auth, inngest, nodemailer, lucide-react
+- Deliverable: runnable `npm run dev` skeleton with lint passing
+
+
+Phase 5: Database & Data Models
+-------------------------------
+- Connect MongoDB via mongoose (database/mongoose.ts)
+- Define Watchlist model (userId, symbol, company name, addedAt)
+- Define Alert model (userId, symbol, targetPrice, condition, status, triggeredAt)
+- Plan indexes for userId + symbol lookups
+- Seed or test with sample documents locally
+- Deliverable: working DB connection + Mongoose models
+
+
+Phase 6: Authentication
+-----------------------
+- Integrate Better Auth (lib/better-auth/auth.ts)
+- Build sign-up and sign-in pages with forms (SignUpForm, SignInForm)
+- Protect routes: dashboard, watchlist, stock detail require session
+- Add UserDropdown and session-aware Header/NavItems
+- Send welcome email on registration (Nodemailer + templates)
+- Deliverable: full auth flow (register, login, logout, protected pages)
+
+
+Phase 7: Market Data & API Layer
+--------------------------------
+- Integrate Finnhub API (lib/actions/finnhub.actions.ts)
+- Implement server actions: search stocks, get quote, get company profile, get news
+- Add API routes: /api/alerts, /api/inngest, /api/trigger-alert
+- Handle rate limiting, caching, and error states for external API failures
+- Expose constants and types (lib/constants.ts, types/global.d.ts)
+- Deliverable: reliable market data layer consumed by UI
+
+
+Phase 8: UI Foundation & Layout
+-------------------------------
+- Build root layout, auth layout, and (root) layout with Header and Footer
+- Apply global styles (globals.css), dark theme, brand colors (#FDD458 gold accent)
+- Create reusable components: InputField, SelectField, CountrySelectField, SearchCommand
+- Wire navigation: home, watchlist, sign-in/sign-up
+- Deliverable: consistent shell and design system across all pages
+
+
+Phase 9: Dashboard & Stock Detail
+---------------------------------
+- Build home page (app/(root)/page.tsx): market overview widgets
+- Embed TradingView widgets (heatmap, top stories, market quotes) via useTradingViewWidget
+- Build stock detail page (app/(root)/stocks/[symbol]/page.tsx) with chart and company info
+- Add WatchlistButton on stock pages (add/remove from watchlist)
+- Deliverable: functional dashboard and per-symbol detail views
+
+
+Phase 10: Watchlist Feature
+---------------------------
+- Build watchlist page (app/(root)/watchlist/page.tsx)
+- Implement WatchlistTable with live price, change %, market cap, P/E
+- Add WatchlistNews for news related to watchlist symbols
+- Server actions: add, remove, list watchlist items (watchlist.actions.ts)
+- Deliverable: full watchlist CRUD with real-time data display
+
+
+Phase 11: Alerts & Background Jobs
+--------------------------------
+- Build AlertModal and AlertList UI for creating and viewing alerts
+- Implement alert server actions (alert.actions.ts): create, list, delete, trigger
+- Set up Inngest client and functions (price check worker, AI news summary)
+- Configure signalist-worker (optional separate worker process)
+- Integrate Gemini AI prompts for personalized market insights (lib/inngest/prompts.ts)
+- Send alert emails via Nodemailer when price thresholds are met
+- Deliverable: end-to-end alert lifecycle (set → schedule → check → notify)
+
+
+Phase 12: Testing, QA & Deployment
+----------------------------------
+- Write unit/integration tests for critical paths (auth, watchlist, alerts)
+- Run ESLint and fix issues (`npm run lint`)
+- Test locally with all env vars and Inngest dev server
+- Deploy frontend to Vercel; configure production env variables
+- Smoke-test: sign up, add watchlist, set alert, verify email delivery
+- Deliverable: production-ready deployed app with passing CI checks
+
+
+Phase 13: Documentation
+-----------------------
+- Write README: features, tech stack, architecture diagrams (Mermaid)
+- Document installation steps, prerequisites, and .env setup
+- Document API endpoints (/api/alerts, /api/inngest, /api/trigger-alert)
+- Add deployment guide (Vercel, optional Docker)
+- Include contributing guidelines, license, and acknowledgments
+- Optional: inline code comments for non-obvious business logic only
+- Deliverable: complete README.md + .env.example that lets a new dev run the project from scratch
