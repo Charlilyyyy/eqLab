@@ -107,7 +107,7 @@ The problem statement describes fragmented tools and missed moves. MarkGauge ans
 ## Related Documents
 
 - [Problem statement](problem-statement.md)
-- User personas *(upcoming)*
+- [User personas](personas.md)
 - Value propositions *(upcoming)*
 - Goals and scope *(upcoming)*
 - Non-goals *(upcoming)*
