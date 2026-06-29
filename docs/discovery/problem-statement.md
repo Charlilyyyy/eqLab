@@ -81,7 +81,7 @@ The following discovery documents define *who* uses the product, *what* value it
 
 ## Related Documents
 
-- Vision and product pitch *(upcoming)*
+- [Vision and product pitch](vision.md)
 - User personas *(upcoming)*
 - Value propositions *(upcoming)*
 - Goals and scope *(upcoming)*
