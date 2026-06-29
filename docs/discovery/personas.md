@@ -208,4 +208,5 @@ These audience types are acknowledged but not primary for the first release:
 - [Vision and product pitch](vision.md)
 - [Value propositions](value-propositions.md)
 - [Goals and scope](goals-and-scope.md)
-- Non-goals *(upcoming)*
+- [Non-goals](non-goals.md)
+- [Discovery index](README.md)

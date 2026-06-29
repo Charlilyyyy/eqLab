@@ -110,4 +110,5 @@ The problem statement describes fragmented tools and missed moves. MarkGauge ans
 - [User personas](personas.md)
 - [Value propositions](value-propositions.md)
 - [Goals and scope](goals-and-scope.md)
-- Non-goals *(upcoming)*
+- [Non-goals](non-goals.md)
+- [Discovery index](README.md)

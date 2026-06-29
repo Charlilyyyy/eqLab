@@ -189,4 +189,5 @@ If scope pressure appears, trim AI polish before watchlist or alert reliability 
 - [Vision and product pitch](vision.md)
 - [User personas](personas.md)
 - [Goals and scope](goals-and-scope.md)
-- Non-goals *(upcoming)*
+- [Non-goals](non-goals.md)
+- [Discovery index](README.md)

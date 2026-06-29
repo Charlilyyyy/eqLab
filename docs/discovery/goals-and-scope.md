@@ -211,4 +211,5 @@ No persona requires portfolio tracking or social features for v1 validation.
 - [Vision and product pitch](vision.md)
 - [User personas](personas.md)
 - [Value propositions](value-propositions.md)
-- [Non-goals](non-goals.md) *(upcoming)*
+- [Non-goals](non-goals.md)
+- [Discovery index](README.md)
