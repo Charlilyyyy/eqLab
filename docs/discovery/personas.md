@@ -207,5 +207,5 @@ These audience types are acknowledged but not primary for the first release:
 - [Problem statement](problem-statement.md)
 - [Vision and product pitch](vision.md)
 - [Value propositions](value-propositions.md)
-- Goals and scope *(upcoming)*
+- [Goals and scope](goals-and-scope.md)
 - Non-goals *(upcoming)*
