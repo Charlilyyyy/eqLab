@@ -97,4 +97,4 @@ Sign up → Dashboard → Search symbol → Stock detail
 
 ## Next Milestone
 
-**Architecture & tech stack** — system diagram, App Router layout, library choices, background job design, and project folder structure before repository scaffolding.
+**Architecture & tech stack** — documented in [architecture index](../architecture/tech-stack.md). Continue with tech stack decisions, system design, data flows, jobs, and folder layout.
