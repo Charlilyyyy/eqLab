@@ -346,5 +346,5 @@ Recommended sequence when initializing the codebase:
 - [System architecture](system-architecture.md)
 - [Background jobs](background-jobs.md)
 - [Tech stack](tech-stack.md)
-- [Architecture index](README.md) *(upcoming)*
+- [Architecture index](README.md)
 - [External services](../requirements/external-services.md)

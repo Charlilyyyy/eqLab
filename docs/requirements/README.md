@@ -91,10 +91,10 @@ Sign up → Dashboard → Search symbol → Stock detail
 
 ## Decision
 
-**Go** — proceed to architecture and tech stack: Next.js structure, data models, API design, and folder layout documented in the next milestone.
+**Go** — requirements complete; architecture documented in [architecture index](../architecture/README.md).
 
 ---
 
 ## Next Milestone
 
-**Architecture & tech stack** — documented in [architecture index](../architecture/tech-stack.md). Continue with tech stack decisions, system design, data flows, jobs, and folder layout.
+**Project setup & environment** — initialize Next.js, tooling, `.env.example`, shadcn/ui, and core dependencies.

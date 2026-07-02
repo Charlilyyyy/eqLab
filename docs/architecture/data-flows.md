@@ -464,6 +464,7 @@ sequenceDiagram
 
 - [System architecture](system-architecture.md)
 - [Background jobs](background-jobs.md)
+- [Architecture index](README.md)
 - [User flows](../requirements/user-flows.md)
 - [Functional requirements](../requirements/functional-requirements.md)
 - [Non-functional requirements](../requirements/non-functional-requirements.md)

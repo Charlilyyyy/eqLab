@@ -356,5 +356,6 @@ Aligns with NFR-U02 unacceptable vs. acceptable degradation modes.
 - [Data flows](data-flows.md)
 - [Background jobs](background-jobs.md)
 - [Folder structure](folder-structure.md)
+- [Architecture index](README.md)
 - [Functional requirements](../requirements/functional-requirements.md)
 - [External services](../requirements/external-services.md)

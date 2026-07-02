@@ -342,4 +342,5 @@ Aligned with [non-goals](../discovery/non-goals.md):
 - [Data flows](data-flows.md)
 - [Background jobs](background-jobs.md)
 - [Folder structure](folder-structure.md)
+- [Architecture index](README.md)
 - [External services](../requirements/external-services.md)

@@ -425,5 +425,6 @@ MarkGauge v1 non-goals include sub-second tick streaming (NFR in tech stack).
 - [Data flows](data-flows.md)
 - [System architecture](system-architecture.md)
 - [Folder structure](folder-structure.md)
+- [Architecture index](README.md)
 - [External services](../requirements/external-services.md)
 - [Functional requirements](../requirements/functional-requirements.md)
