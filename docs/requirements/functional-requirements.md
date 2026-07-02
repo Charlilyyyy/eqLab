@@ -266,7 +266,7 @@ Managed by authentication library; MarkGauge stores session reference and profil
 
 - [User flows](user-flows.md)
 - [Competitor analysis](competitor-analysis.md)
-- [Non-functional requirements](non-functional-requirements.md) *(upcoming)*
+- [Non-functional requirements](non-functional-requirements.md)
 - [External services](external-services.md) *(upcoming)*
 - [Feature checklist](feature-checklist.md) *(upcoming)*
 - [Discovery goals and scope](../discovery/goals-and-scope.md)
