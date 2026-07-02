@@ -341,5 +341,5 @@ Aligned with [non-goals](../discovery/non-goals.md):
 - [System architecture](system-architecture.md)
 - [Data flows](data-flows.md)
 - [Background jobs](background-jobs.md)
-- [Folder structure](folder-structure.md) *(upcoming)*
+- [Folder structure](folder-structure.md)
 - [External services](../requirements/external-services.md)
