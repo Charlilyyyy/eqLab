@@ -343,5 +343,6 @@ Auth (F1/F2) gates all personalized flows. Alert delivery (F7) depends on alert 
 - [Functional requirements](functional-requirements.md)
 - [Non-functional requirements](non-functional-requirements.md)
 - [External services](external-services.md)
-- [Feature checklist](feature-checklist.md) *(upcoming)*
+- [Feature checklist](feature-checklist.md)
+- [Requirements index](README.md)
 - [Discovery index](../discovery/README.md)

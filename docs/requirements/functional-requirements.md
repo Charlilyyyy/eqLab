@@ -1,6 +1,6 @@
 # Functional Requirements
 
-Functional specification for **MarkGauge** v1. Requirements trace to [user flows](user-flows.md) and discovery scope. Each item uses **FR-** IDs for checklist mapping in a later document.
+Functional specification for **MarkGauge** v1. Requirements trace to [user flows](user-flows.md) and discovery scope. Each item uses **FR-** IDs for mapping in the [feature checklist](feature-checklist.md).
 
 **Priority key:** `P0` = must ship for v1 gate | `P1` = should ship | `P2` = optional polish
 
@@ -268,5 +268,6 @@ Managed by authentication library; MarkGauge stores session reference and profil
 - [Competitor analysis](competitor-analysis.md)
 - [Non-functional requirements](non-functional-requirements.md)
 - [External services](external-services.md)
-- [Feature checklist](feature-checklist.md) *(upcoming)*
+- [Feature checklist](feature-checklist.md)
+- [Requirements index](README.md)
 - [Discovery goals and scope](../discovery/goals-and-scope.md)

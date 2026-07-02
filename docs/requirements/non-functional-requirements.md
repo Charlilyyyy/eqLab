@@ -237,5 +237,6 @@ Values to externalize in environment or constants — finalized during architect
 - [Functional requirements](functional-requirements.md)
 - [User flows](user-flows.md)
 - [External services](external-services.md)
-- [Feature checklist](feature-checklist.md) *(upcoming)*
+- [Feature checklist](feature-checklist.md)
+- [Requirements index](README.md)
 - [Discovery non-goals](../discovery/non-goals.md)

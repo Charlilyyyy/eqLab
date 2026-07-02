@@ -76,4 +76,4 @@ Register → add symbols to watchlist → set price alert → receive email when
 
 ## Next Milestone
 
-Discovery hands off to **research and requirements**: competitor study, detailed feature checklist, and integration choices for auth, database, market data, background jobs, email, and AI — documented outside this folder in later work.
+Handoff to **research and requirements** is complete. Continue with [requirements index](../requirements/README.md) for competitor analysis, user flows, functional specs, and the feature checklist.

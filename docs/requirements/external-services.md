@@ -413,5 +413,6 @@ Exact pricing tracked during implementation; architecture should allow provider 
 - [Functional requirements](functional-requirements.md)
 - [Non-functional requirements](non-functional-requirements.md)
 - [User flows](user-flows.md)
-- [Feature checklist](feature-checklist.md) *(upcoming)*
+- [Feature checklist](feature-checklist.md)
+- [Requirements index](README.md)
 - [Discovery goals and scope](../discovery/goals-and-scope.md)
