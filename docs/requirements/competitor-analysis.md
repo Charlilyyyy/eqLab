@@ -269,7 +269,7 @@ MarkGauge targets **high monitoring, low execution** — unoccupied by brokers a
 ## Related Documents
 
 - [User flows](user-flows.md)
-- [Functional requirements](functional-requirements.md) *(upcoming)*
+- [Functional requirements](functional-requirements.md)
 - [Non-functional requirements](non-functional-requirements.md) *(upcoming)*
 - [External services](external-services.md) *(upcoming)*
 - [Feature checklist](feature-checklist.md) *(upcoming)*

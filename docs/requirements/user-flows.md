@@ -340,7 +340,7 @@ Auth (F1/F2) gates all personalized flows. Alert delivery (F7) depends on alert 
 ## Related Documents
 
 - [Competitor analysis](competitor-analysis.md)
-- [Functional requirements](functional-requirements.md) *(upcoming)*
+- [Functional requirements](functional-requirements.md)
 - [Non-functional requirements](non-functional-requirements.md) *(upcoming)*
 - [External services](external-services.md) *(upcoming)*
 - [Feature checklist](feature-checklist.md) *(upcoming)*
