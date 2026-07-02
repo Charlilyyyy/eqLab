@@ -338,7 +338,7 @@ Aligned with [non-goals](../discovery/non-goals.md):
 
 ## Related Documents
 
-- [System architecture](system-architecture.md) *(upcoming)*
+- [System architecture](system-architecture.md)
 - [Data flows](data-flows.md) *(upcoming)*
 - [Background jobs](background-jobs.md) *(upcoming)*
 - [Folder structure](folder-structure.md) *(upcoming)*
