@@ -182,7 +182,7 @@ Functional specification for **MarkGauge** v1. Requirements trace to [user flows
 | FR-M05 | Responses are cached within rate-limit policy | P0 | F4, F7 |
 | FR-M06 | API errors map to user-visible or logged states per call site | P0 | All |
 
-**Note:** Provider selection documented in [external services](external-services.md) *(upcoming)*.
+**Note:** Provider selection documented in [external services](external-services.md).
 
 ---
 
@@ -267,6 +267,6 @@ Managed by authentication library; MarkGauge stores session reference and profil
 - [User flows](user-flows.md)
 - [Competitor analysis](competitor-analysis.md)
 - [Non-functional requirements](non-functional-requirements.md)
-- [External services](external-services.md) *(upcoming)*
+- [External services](external-services.md)
 - [Feature checklist](feature-checklist.md) *(upcoming)*
 - [Discovery goals and scope](../discovery/goals-and-scope.md)
