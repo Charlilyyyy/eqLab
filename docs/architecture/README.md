@@ -102,10 +102,10 @@ Browser → Next.js (RSC + server actions) → MongoDB
 
 ## Decision
 
-**Go** — proceed to project setup: initialize Next.js, configure tooling, add `.env.example`, install dependencies, and scaffold shadcn/ui.
+**Go** — project setup complete. Runnable `npm run dev` skeleton with lint and build passing.
 
 ---
 
 ## Next Milestone
 
-**Project setup & environment** — runnable `npm run dev`, ESLint passing, path aliases, env template, and UI primitives installed before database and auth implementation.
+**Database and data models** — Mongoose models for watchlist and alerts, connection wiring, and sample data validation.
