@@ -1,0 +1,20 @@
+import Link from 'next/link';
+
+type FooterLinkProps = {
+  text: string;
+  linkText: string;
+  href: string;
+};
+
+export function FooterLink({ text, linkText, href }: FooterLinkProps) {
+  return (
+    <div className="pt-4 text-center">
+      <p className="text-sm text-gray-500">
+        {text}{' '}
+        <Link href={href} className="footer-link">
+          {linkText}
+        </Link>
+      </p>
+    </div>
+  );
+}

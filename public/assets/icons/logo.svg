@@ -1,0 +1,5 @@
+<svg width="140" height="32" viewBox="0 0 140 32" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="MarkGauge">
+  <rect x="0" y="4" width="24" height="24" rx="6" fill="#E8BA40"/>
+  <path d="M8 20V12L12 16L16 12V20" stroke="#141414" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="32" y="22" fill="#CCDADC" font-family="system-ui, sans-serif" font-size="18" font-weight="700">MarkGauge</text>
+</svg>

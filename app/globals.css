@@ -30,7 +30,11 @@
 @theme {
   --color-gray-900: #050505;
   --color-gray-800: #141414;
+  --color-gray-700: #212328;
+  --color-gray-600: #30333a;
+  --color-gray-500: #9095a1;
   --color-gray-400: #ccdadc;
+  --color-yellow-400: #fdd458;
   --color-yellow-500: #e8ba40;
 }
 
@@ -42,4 +46,108 @@
   body {
     @apply bg-gray-900 text-foreground antialiased;
   }
+}
+
+@layer utilities {
+  .container {
+    @apply mx-auto max-w-screen-2xl px-4 md:px-6 lg:px-8;
+  }
+
+  .header {
+    @apply sticky top-0 z-50 h-[70px] w-full bg-gray-800;
+  }
+
+  .header-wrapper {
+    @apply flex items-center justify-between px-6 py-4 text-gray-500;
+  }
+
+  .nav-list {
+    @apply flex flex-col gap-3 p-2 font-medium sm:flex-row sm:gap-10;
+  }
+
+  .search-text {
+    @apply hover:text-yellow-500;
+  }
+
+  .footer-link {
+    @apply font-medium text-gray-400 transition-colors hover:text-yellow-400 hover:underline;
+  }
+
+  .home-wrapper {
+    @apply flex-col items-center gap-4 text-gray-400 sm:items-start;
+  }
+
+  .home-section {
+    @apply grid w-full grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3;
+  }
+
+  .auth-layout {
+    @apply relative flex h-screen flex-col overflow-hidden bg-gray-900 lg:flex-row;
+  }
+
+  .auth-logo {
+    @apply mb-8 pt-6 lg:mb-12 lg:pt-8;
+  }
+
+  .auth-left-section {
+    @apply flex w-full flex-col overflow-y-auto px-6 lg:h-screen lg:w-[45%] lg:px-16;
+  }
+
+  .auth-right-section {
+    @apply flex w-full flex-col justify-start border-gray-600 px-6 py-4 max-lg:border-t md:p-6 lg:h-screen lg:w-[55%] lg:px-18 lg:py-12;
+  }
+
+  .auth-blockquote {
+    @apply mb-1 text-sm font-medium text-gray-400 md:mb-6 md:text-xl lg:mb-8 lg:text-2xl;
+  }
+
+  .auth-testimonial-author {
+    @apply text-xs font-bold not-italic text-gray-400 md:text-lg;
+  }
+
+  .form-title {
+    @apply mb-10 text-4xl font-bold text-gray-400;
+  }
+
+  .stock-details-container {
+    @apply grid w-full grid-cols-1 gap-6 space-y-6 sm:space-y-8 xl:grid-cols-3;
+  }
+
+  .watchlist-empty-container {
+    @apply container flex flex-col items-center gap-8 p-6 text-center md:mt-10;
+  }
+
+  .watchlist-empty {
+    @apply flex flex-col items-center justify-center text-center;
+  }
+
+  .empty-title {
+    @apply mb-2 text-xl font-semibold text-gray-400;
+  }
+
+  .empty-description {
+    @apply mb-6 max-w-md text-gray-500;
+  }
+}
+
+.scrollbar-hide-default {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+
+.scrollbar-hide-default::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scrollbar-hide-default::-webkit-scrollbar-thumb {
+  background-color: transparent;
+  border-radius: 4px;
+}
+
+.scrollbar-hide-default:hover {
+  scrollbar-color: #30333a transparent;
+}
+
+.scrollbar-hide-default:hover::-webkit-scrollbar-thumb {
+  background-color: #30333a;
 }
