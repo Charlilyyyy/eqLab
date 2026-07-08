@@ -1,11 +1,22 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { redirect } from 'next/navigation';
 
-export default function AuthLayout({
+import { getCurrentUser } from '@/lib/better-auth/session';
+
+export const dynamic = 'force-dynamic';
+
+export default async function AuthLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const user = await getCurrentUser();
+
+  if (user) {
+    redirect('/');
+  }
+
   return (
     <main className="auth-layout">
       <section className="auth-left-section scrollbar-hide-default">
