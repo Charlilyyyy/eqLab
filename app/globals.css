@@ -133,6 +133,18 @@
     @apply mb-10 text-4xl font-bold text-gray-400;
   }
 
+  .form-label {
+    @apply text-sm font-medium text-gray-400;
+  }
+
+  .form-input {
+    @apply h-12 rounded-lg border-gray-600 bg-gray-800 text-gray-400 placeholder:text-gray-500 focus-visible:border-yellow-500 focus-visible:ring-yellow-500/20;
+  }
+
+  .yellow-btn {
+    @apply h-12 cursor-pointer rounded-lg bg-gradient-to-b from-yellow-400 to-yellow-500 text-base font-medium text-gray-950 shadow-lg hover:from-yellow-500 hover:to-yellow-400 disabled:opacity-50;
+  }
+
   .stock-details-container {
     @apply grid w-full grid-cols-1 gap-6 space-y-6 sm:space-y-8 xl:grid-cols-3;
   }
