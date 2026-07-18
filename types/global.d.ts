@@ -200,6 +200,12 @@ declare global {
     currentPrice: string;
     thresholdPrice: string;
   };
+
+  type NewsSummaryEmailData = {
+    email: string;
+    date: string;
+    newsContent: string;
+  };
 }
 
 export {};

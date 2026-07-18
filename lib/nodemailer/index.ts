@@ -1,5 +1,6 @@
 import nodemailer from 'nodemailer';
 import {
+  NEWS_SUMMARY_EMAIL_TEMPLATE,
   STOCK_ALERT_LOWER_EMAIL_TEMPLATE,
   STOCK_ALERT_UPPER_EMAIL_TEMPLATE,
   WELCOME_EMAIL_TEMPLATE,
@@ -63,6 +64,27 @@ export async function sendPriceAlertEmail({
     to: email,
     subject: `Alert: ${symbol} — ${alertName}`,
     text: `Price alert triggered for ${symbol}`,
+    html,
+  });
+}
+
+export async function sendNewsSummaryEmail({
+  email,
+  date,
+  newsContent,
+}: NewsSummaryEmailData) {
+  const html = NEWS_SUMMARY_EMAIL_TEMPLATE.replace('{{date}}', date).replace(
+    '{{newsContent}}',
+    newsContent
+  );
+
+  const transporter = createTransporter();
+
+  await transporter.sendMail({
+    from: `"MarkGauge News" <${process.env.NODEMAILER_EMAIL}>`,
+    to: email,
+    subject: `Market brief — ${date}`,
+    text: 'Your MarkGauge market brief',
     html,
   });
 }

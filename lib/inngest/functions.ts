@@ -1,8 +1,20 @@
 import { connectToDatabase } from '@/database/mongoose';
-import { sendPriceAlertEmail, sendWelcomeEmail } from '@/lib/nodemailer';
+import { getNews } from '@/lib/actions/finnhub.actions';
+import { getAllUsersForNewsEmail } from '@/lib/actions/user.actions';
+import { getWatchlistSymbolsByEmail } from '@/lib/actions/watchlist.actions';
+import { NO_MARKET_NEWS } from '@/lib/constants';
+import {
+  sendNewsSummaryEmail,
+  sendPriceAlertEmail,
+  sendWelcomeEmail,
+} from '@/lib/nodemailer';
+import { formatDateToday } from '@/lib/utils';
 
 import { inngest } from './client';
-import { PERSONALIZED_WELCOME_EMAIL_PROMPT } from './prompts';
+import {
+  NEWS_SUMMARY_EMAIL_PROMPT,
+  PERSONALIZED_WELCOME_EMAIL_PROMPT,
+} from './prompts';
 
 const FINNHUB_BASE_URL =
   process.env.FINNHUB_BASE_URL ?? 'https://finnhub.io/api/v1';
@@ -83,6 +95,83 @@ export const sendSignUpEmail = inngest.createFunction(
       success: true,
       message: `Welcome email sent to ${event.data.email}`,
     };
+  }
+);
+
+// Sends a personalized, AI-summarized market brief to every user on a schedule.
+export const sendDailyNewsSummary = inngest.createFunction(
+  { id: 'daily-news-summary' },
+  [{ cron: '0 12 * * *' }, { event: 'app/send.daily.news' }],
+  async ({ step }) => {
+    const users = await step.run('get-all-users', getAllUsersForNewsEmail);
+
+    if (!users || users.length === 0) {
+      return { success: false, message: 'No users found for news delivery' };
+    }
+
+    const userNewsData = await step.run('fetch-user-news', async () =>
+      Promise.all(
+        users.map(async (user) => {
+          try {
+            const watchlist = await getWatchlistSymbolsByEmail(user.email);
+            const news = await getNews(
+              watchlist.length > 0 ? watchlist : undefined
+            );
+            return { user, news };
+          } catch (error) {
+            console.error(`Failed to fetch news for ${user.email}:`, error);
+            return { user, news: [] };
+          }
+        })
+      )
+    );
+
+    const userNewsSummaries: {
+      user: (typeof users)[number];
+      newsContent: string | null;
+    }[] = [];
+
+    for (const { user, news } of userNewsData) {
+      try {
+        const prompt = NEWS_SUMMARY_EMAIL_PROMPT.replace(
+          '{{newsData}}',
+          JSON.stringify(news, null, 2)
+        );
+
+        const response = await step.ai.infer(`summarize-news-${user.email}`, {
+          model: step.ai.models.gemini({ model: 'gemini-2.5-flash-lite' }),
+          body: {
+            contents: [{ role: 'user', parts: [{ text: prompt }] }],
+          },
+        });
+
+        const part = response.candidates?.[0]?.content?.parts?.[0];
+        const newsContent =
+          part && 'text' in part && typeof part.text === 'string'
+            ? part.text
+            : NO_MARKET_NEWS;
+
+        userNewsSummaries.push({ user, newsContent });
+      } catch (error) {
+        console.error(`Failed to summarize news for ${user.email}:`, error);
+        userNewsSummaries.push({ user, newsContent: null });
+      }
+    }
+
+    await step.run('send-news-emails', async () => {
+      await Promise.all(
+        userNewsSummaries.map(async ({ user, newsContent }) => {
+          if (!newsContent) return false;
+          return sendNewsSummaryEmail({
+            email: user.email,
+            date: formatDateToday,
+            newsContent,
+          });
+        })
+      );
+    });
+
+    return { success: true, message: 'Daily news summary emails sent' };
   }
 );
 
