@@ -2,9 +2,15 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+
+import { SearchCommand } from '@/components/SearchCommand';
 import { NAV_ITEMS } from '@/lib/constants';
 
-export function NavItems() {
+export function NavItems({
+  initialStocks = [],
+}: {
+  initialStocks?: StockWithWatchlistStatus[];
+}) {
   const pathname = usePathname();
 
   const isActive = (path: string) => {
@@ -14,13 +20,21 @@ export function NavItems() {
 
   return (
     <ul className="nav-list">
-      {NAV_ITEMS.map((item) => (
-        <li key={item.href}>
-          {item.label === 'Search' ? (
-            <span className="search-text cursor-not-allowed opacity-60">
-              {item.label}
-            </span>
-          ) : (
+      {NAV_ITEMS.map((item) => {
+        if (item.label === 'Search') {
+          return (
+            <li key="search-trigger">
+              <SearchCommand
+                renderAs="text"
+                label="Search"
+                initialStocks={initialStocks}
+              />
+            </li>
+          );
+        }
+
+        return (
+          <li key={item.href}>
             <Link
               href={item.href}
               className={`transition-colors hover:text-yellow-500 ${
@@ -29,9 +43,9 @@ export function NavItems() {
             >
               {item.label}
             </Link>
-          )}
-        </li>
-      ))}
+          </li>
+        );
+      })}
     </ul>
   );
 }
