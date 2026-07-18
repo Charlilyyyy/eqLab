@@ -9,6 +9,57 @@ export function delay(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
+export function formatTimeAgo(timestamp: number) {
+  const now = Date.now();
+  const diffInMs = now - timestamp * 1000;
+  const diffInHours = Math.floor(diffInMs / (1000 * 60 * 60));
+  const diffInMinutes = Math.floor(diffInMs / (1000 * 60));
+
+  if (diffInHours > 24) {
+    const days = Math.floor(diffInHours / 24);
+    return `${days} day${days > 1 ? 's' : ''} ago`;
+  }
+  if (diffInHours >= 1) {
+    return `${diffInHours} hour${diffInHours > 1 ? 's' : ''} ago`;
+  }
+  return `${diffInMinutes} minute${diffInMinutes !== 1 ? 's' : ''} ago`;
+}
+
+export function getDateRange(days: number) {
+  const toDate = new Date();
+  const fromDate = new Date();
+  fromDate.setDate(toDate.getDate() - days);
+  return {
+    to: toDate.toISOString().split('T')[0],
+    from: fromDate.toISOString().split('T')[0],
+  };
+}
+
+export function validateArticle(article: RawNewsArticle) {
+  return Boolean(
+    article.headline && article.summary && article.url && article.datetime
+  );
+}
+
+export function formatArticle(
+  article: RawNewsArticle,
+  isCompanyNews: boolean,
+  symbol?: string,
+  index = 0
+): MarketNewsArticle {
+  return {
+    id: isCompanyNews ? Date.now() + Math.random() : article.id + index,
+    headline: article.headline!.trim(),
+    summary:
+      article.summary!.trim().substring(0, isCompanyNews ? 200 : 150) + '...',
+    source: article.source || (isCompanyNews ? 'Company News' : 'Market News'),
+    url: article.url!,
+    datetime: article.datetime!,
+    category: isCompanyNews ? 'company' : article.category || 'general',
+    related: isCompanyNews ? symbol! : article.related || '',
+  };
+}
+
 export function formatPrice(price: number) {
   return new Intl.NumberFormat('en-US', {
     style: 'currency',
