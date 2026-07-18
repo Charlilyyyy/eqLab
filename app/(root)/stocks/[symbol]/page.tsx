@@ -1,21 +1,83 @@
-type StockDetailPageProps = {
-  params: Promise<{ symbol: string }>;
-};
+import { notFound } from 'next/navigation';
 
-export default async function StockDetailPage({ params }: StockDetailPageProps) {
+import { TradingViewWidget } from '@/components/TradingViewWidget';
+import { WatchlistButton } from '@/components/WatchlistButton';
+import type { WatchlistItem } from '@/database/models/watchlist.model';
+import { getStocksDetails } from '@/lib/actions/finnhub.actions';
+import { getUserWatchlist } from '@/lib/actions/watchlist.actions';
+import {
+  BASELINE_WIDGET_CONFIG,
+  CANDLE_CHART_WIDGET_CONFIG,
+  COMPANY_FINANCIALS_WIDGET_CONFIG,
+  COMPANY_PROFILE_WIDGET_CONFIG,
+  SYMBOL_INFO_WIDGET_CONFIG,
+  TECHNICAL_ANALYSIS_WIDGET_CONFIG,
+} from '@/lib/constants';
+
+const SCRIPT_BASE =
+  'https://s3.tradingview.com/external-embedding/embed-widget-';
+
+export default async function StockDetailPage({
+  params,
+}: StockDetailsPageProps) {
   const { symbol } = await params;
+  const upperSymbol = symbol.toUpperCase();
+
+  const stockData = await getStocksDetails(upperSymbol);
+  if (!stockData) notFound();
+
+  const watchlist = await getUserWatchlist();
+  const isInWatchlist = watchlist.some(
+    (item: WatchlistItem) => item.symbol === upperSymbol
+  );
 
   return (
-    <section className="stock-details-container grid">
-      <div className="space-y-4">
-        <h1 className="text-3xl font-bold uppercase text-gray-100">{symbol}</h1>
-        <p className="text-gray-500">
-          Live quote, chart, and company profile will render here.
-        </p>
-        <div className="rounded-lg border border-gray-600 bg-gray-800 p-8 text-center text-sm text-gray-500">
-          Chart widget placeholder
-        </div>
-      </div>
-    </section>
+    <div className="stock-details-container grid">
+      <section className="flex flex-col gap-6 lg:col-span-2">
+        <TradingViewWidget
+          scriptUrl={`${SCRIPT_BASE}symbol-info.js`}
+          config={SYMBOL_INFO_WIDGET_CONFIG(symbol)}
+          height={170}
+          className="custom-chart"
+        />
+
+        <TradingViewWidget
+          scriptUrl={`${SCRIPT_BASE}advanced-chart.js`}
+          config={CANDLE_CHART_WIDGET_CONFIG(symbol)}
+        />
+
+        <TradingViewWidget
+          scriptUrl={`${SCRIPT_BASE}advanced-chart.js`}
+          config={BASELINE_WIDGET_CONFIG(symbol)}
+        />
+      </section>
+
+      <section className="flex w-full flex-col gap-6 lg:col-span-1">
+        <WatchlistButton
+          symbol={upperSymbol}
+          company={stockData.company}
+          isInWatchlist={isInWatchlist}
+          type="button"
+        />
+
+        <TradingViewWidget
+          scriptUrl={`${SCRIPT_BASE}technical-analysis.js`}
+          config={TECHNICAL_ANALYSIS_WIDGET_CONFIG(symbol)}
+          height={400}
+        />
+
+        <TradingViewWidget
+          scriptUrl={`${SCRIPT_BASE}symbol-profile.js`}
+          config={COMPANY_PROFILE_WIDGET_CONFIG(symbol)}
+          height={440}
+        />
+
+        <TradingViewWidget
+          scriptUrl={`${SCRIPT_BASE}financials.js`}
+          config={COMPANY_FINANCIALS_WIDGET_CONFIG(symbol)}
+          height={464}
+        />
+      </section>
+    </div>
   );
 }
