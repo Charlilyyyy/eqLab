@@ -1,8 +1,10 @@
 import { Star } from 'lucide-react';
 
+import { AlertList } from '@/components/AlertList';
 import { SearchCommand } from '@/components/SearchCommand';
 import { WatchlistNews } from '@/components/WatchlistNews';
 import { WatchlistTable } from '@/components/WatchlistTable';
+import { getUserAlerts } from '@/lib/actions/alert.actions';
 import { getNews, searchStocks } from '@/lib/actions/finnhub.actions';
 import { getWatchlistWithData } from '@/lib/actions/watchlist.actions';
 
@@ -11,6 +13,7 @@ export default async function WatchlistPage() {
   const initialStocks = await searchStocks();
   const symbols = watchlist.map((item: StockWithData) => item.symbol);
   const news = await getNews(symbols);
+  const alerts = await getUserAlerts();
 
   if (watchlist.length === 0) {
     return (
@@ -43,6 +46,11 @@ export default async function WatchlistPage() {
           <h2 className="watchlist-title">News</h2>
           <WatchlistNews news={news} />
         </div>
+      </section>
+
+      <section className="watchlist-alerts flex">
+        <h2 className="text-2xl font-bold text-gray-100">Alerts</h2>
+        <AlertList alertData={alerts} />
       </section>
     </div>
   );
