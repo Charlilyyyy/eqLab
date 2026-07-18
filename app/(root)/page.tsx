@@ -1,27 +1,56 @@
+import { TradingViewWidget } from '@/components/TradingViewWidget';
+import {
+  HEATMAP_WIDGET_CONFIG,
+  MARKET_DATA_WIDGET_CONFIG,
+  MARKET_OVERVIEW_WIDGET_CONFIG,
+  TOP_STORIES_WIDGET_CONFIG,
+} from '@/lib/constants';
+
+const SCRIPT_BASE =
+  'https://s3.tradingview.com/external-embedding/embed-widget-';
+
 export default function DashboardPage() {
   return (
-    <section className="home-wrapper flex">
-      <div className="w-full space-y-4">
-        <h1 className="text-3xl font-bold text-gray-100">Market dashboard</h1>
-        <p className="max-w-2xl text-gray-500">
-          Overview widgets and live market data will load here after integrations
-          are wired in upcoming commits.
-        </p>
-        <div className="home-section grid gap-4 pt-4">
-          <div className="rounded-lg border border-gray-600 bg-gray-800 p-6">
-            <h2 className="mb-2 font-semibold text-gray-300">Indices</h2>
-            <p className="text-sm text-gray-500">TradingView embed placeholder</p>
-          </div>
-          <div className="rounded-lg border border-gray-600 bg-gray-800 p-6">
-            <h2 className="mb-2 font-semibold text-gray-300">Market heatmap</h2>
-            <p className="text-sm text-gray-500">TradingView embed placeholder</p>
-          </div>
-          <div className="rounded-lg border border-gray-600 bg-gray-800 p-6">
-            <h2 className="mb-2 font-semibold text-gray-300">Top stories</h2>
-            <p className="text-sm text-gray-500">Market news placeholder</p>
-          </div>
+    <div className="home-wrapper flex min-h-screen">
+      <section className="home-section grid w-full gap-8">
+        <div className="md:col-span-1 xl:col-span-1">
+          <TradingViewWidget
+            title="Market overview"
+            scriptUrl={`${SCRIPT_BASE}market-overview.js`}
+            config={MARKET_OVERVIEW_WIDGET_CONFIG}
+            height={600}
+            className="custom-chart"
+          />
         </div>
-      </div>
-    </section>
+        <div className="md:col-span-1 xl:col-span-2">
+          <TradingViewWidget
+            title="Stock heatmap"
+            scriptUrl={`${SCRIPT_BASE}stock-heatmap.js`}
+            config={HEATMAP_WIDGET_CONFIG}
+            height={600}
+          />
+        </div>
+      </section>
+
+      <section className="home-section grid w-full gap-8">
+        <div className="h-full md:col-span-1 xl:col-span-1">
+          <TradingViewWidget
+            title="Top stories"
+            scriptUrl={`${SCRIPT_BASE}timeline.js`}
+            config={TOP_STORIES_WIDGET_CONFIG}
+            height={600}
+            className="custom-chart"
+          />
+        </div>
+        <div className="h-full md:col-span-1 xl:col-span-2">
+          <TradingViewWidget
+            title="Market quotes"
+            scriptUrl={`${SCRIPT_BASE}market-quotes.js`}
+            config={MARKET_DATA_WIDGET_CONFIG}
+            height={600}
+          />
+        </div>
+      </section>
+    </div>
   );
 }
