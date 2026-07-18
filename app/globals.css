@@ -184,6 +184,202 @@
   .empty-description {
     @apply mb-6 max-w-md text-gray-500;
   }
+
+  .search-btn {
+    @apply flex w-fit cursor-pointer items-center gap-2 rounded bg-yellow-500 px-4 py-2 text-sm font-medium text-black hover:bg-yellow-500 md:text-base;
+  }
+
+  .search-dialog {
+    @apply fixed left-1/2 top-10 -translate-x-1/2 translate-y-10 border-gray-600 bg-gray-800! lg:min-w-[800px];
+  }
+
+  .search-field {
+    @apply relative border-b border-gray-600 bg-gray-800!;
+  }
+
+  .search-list {
+    @apply max-h-[400px] bg-gray-800!;
+  }
+
+  .search-list-indicator {
+    @apply px-5 py-2;
+  }
+
+  .search-list-empty {
+    @apply bg-transparent! py-6 text-center text-gray-500;
+  }
+
+  .search-input {
+    @apply h-14 border-0 bg-gray-800! pr-10 text-base text-gray-400 placeholder:text-gray-500 focus:ring-0;
+  }
+
+  .search-loader {
+    @apply absolute right-12 top-1/2 h-4 w-4 -translate-y-1/2 animate-spin text-gray-500;
+  }
+
+  .search-count {
+    @apply border-b border-gray-700 bg-gray-700 px-4 py-2 text-sm font-medium text-gray-400;
+  }
+
+  .search-item {
+    @apply my-3 w-full rounded-none px-1 data-[selected=true]:bg-gray-600;
+  }
+
+  .search-item-link {
+    @apply flex w-full cursor-pointer items-center gap-3 border-b border-gray-600 px-2 transition-colors last:border-b-0;
+  }
+
+  .search-item-name {
+    @apply text-base font-medium text-gray-400;
+  }
+
+  .watchlist-btn {
+    @apply h-11 w-full cursor-pointer rounded bg-yellow-500 text-base font-semibold text-gray-900 hover:bg-yellow-500;
+  }
+
+  .watchlist-remove {
+    @apply bg-red-500! text-gray-900! hover:bg-red-500!;
+  }
+
+  .watchlist-star {
+    @apply mb-4 h-16 w-16 text-gray-500;
+  }
+
+  .watchlist-container {
+    @apply flex flex-col-reverse gap-8 lg:grid lg:grid-cols-3;
+  }
+
+  .watchlist {
+    @apply space-y-8 lg:col-span-2;
+  }
+
+  .watchlist-alerts {
+    @apply h-full w-full flex-col items-start gap-6 lg:col-span-1;
+  }
+
+  .watchlist-icon-btn {
+    @apply w-fit cursor-pointer text-gray-400 hover:bg-transparent! hover:text-yellow-500;
+  }
+
+  .watchlist-icon-added {
+    @apply text-yellow-500! hover:text-yellow-600!;
+  }
+
+  .watchlist-icon {
+    @apply flex h-8 w-8 items-center justify-center rounded-full bg-gray-700/50;
+  }
+
+  .trash-icon {
+    @apply h-4 w-4 text-gray-400 hover:text-red-400;
+  }
+
+  .star-icon {
+    @apply h-4 w-4;
+  }
+
+  .watchlist-title {
+    @apply text-xl font-bold text-gray-100 md:text-2xl;
+  }
+
+  .watchlist-table {
+    @apply relative! w-full! overflow-hidden rounded-lg! border border-gray-600! bg-gray-800;
+  }
+
+  .table-header-row {
+    @apply border-b border-gray-600 bg-gray-700 font-medium text-gray-400 hover:bg-gray-700;
+  }
+
+  .table-header:first-child {
+    @apply pl-4;
+  }
+
+  .table-row {
+    @apply cursor-pointer border-b border-gray-600 text-gray-100 transition-colors hover:bg-gray-700/50;
+  }
+
+  .table-cell {
+    @apply text-base font-medium;
+  }
+
+  .add-alert {
+    @apply flex w-fit cursor-pointer items-center gap-1.5 whitespace-nowrap rounded border border-yellow-600/20 bg-transparent px-3 py-2 text-sm font-medium text-yellow-600 transition-colors hover:bg-transparent;
+  }
+
+  .watchlist-news {
+    @apply grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3;
+  }
+
+  .news-item {
+    @apply w-full cursor-pointer rounded-lg border border-gray-600 bg-gray-800 p-4 duration-200 hover:border-gray-600;
+  }
+
+  .news-tag {
+    @apply mb-5 inline-block w-fit rounded bg-gray-600/60 px-2 py-1 font-mono text-sm font-medium text-green-500;
+  }
+
+  .news-title {
+    @apply mb-3 line-clamp-2 text-lg font-semibold leading-tight text-gray-100;
+  }
+
+  .news-meta {
+    @apply mb-1 flex items-center text-sm text-gray-500;
+  }
+
+  .news-summary {
+    @apply mb-3 line-clamp-3 flex-1 text-base leading-relaxed text-gray-400;
+  }
+
+  .news-cta {
+    @apply align-bottom text-sm text-yellow-500 hover:text-gray-400;
+  }
+
+  .alert-dialog {
+    @apply max-w-md border-gray-600 bg-gray-800 text-gray-400;
+  }
+
+  .alert-title {
+    @apply text-xl font-semibold text-gray-100;
+  }
+
+  .alert-list {
+    @apply flex max-h-[911px] w-full flex-1 flex-col gap-4 overflow-y-auto rounded-lg border border-gray-600 bg-gray-800 p-3;
+  }
+
+  .alert-empty {
+    @apply px-6 py-8 text-center text-gray-500/50;
+  }
+
+  .alert-item {
+    @apply rounded-lg border border-gray-600 bg-gray-700 p-4;
+  }
+
+  .alert-name {
+    @apply mb-2 text-lg font-semibold text-yellow-500;
+  }
+
+  .alert-details {
+    @apply mb-2 flex items-center justify-between gap-3 border-b pb-3;
+  }
+
+  .alert-company {
+    @apply text-base text-gray-400;
+  }
+
+  .alert-price {
+    @apply font-bold text-gray-100;
+  }
+
+  .alert-actions {
+    @apply flex items-end justify-between;
+  }
+
+  .alert-update-btn {
+    @apply cursor-pointer rounded-full bg-transparent text-gray-400 hover:bg-green-500/15;
+  }
+
+  .alert-delete-btn {
+    @apply cursor-pointer rounded-full bg-transparent text-gray-400 transition-colors hover:bg-red-600/15;
+  }
 }
 
 .scrollbar-hide-default {
@@ -206,4 +402,64 @@
 
 .scrollbar-hide-default:hover::-webkit-scrollbar-thumb {
   background-color: #30333a;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* TradingView widget theming */
+.tradingview-widget-container {
+  position: relative;
+  background-color: #141414 !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+}
+
+.tv-embed-widget-wrapper__body {
+  background-color: #141414 !important;
+}
+
+.tradingview-widget-container__widget {
+  background-color: #141414 !important;
+  height: 100% !important;
+}
+
+.tv-site-widget--bg_none {
+  background-color: transparent !important;
+}
+
+.tradingview-widget-copyright {
+  font-size: 11px;
+  color: #9ca3af;
+  text-align: center;
+  padding: 4px 0;
+  background-color: transparent;
+}
+
+.tradingview-widget-copyright a {
+  color: #60a5fa;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.tradingview-widget-copyright a:hover {
+  color: #93c5fd;
+  text-decoration: underline;
+}
+
+.tradingview-widget-container iframe {
+  background-color: #141414 !important;
+  width: 100% !important;
+}
+
+.custom-chart.tradingview-widget-container iframe {
+  border: 1px solid #30333a;
+  border-radius: 8px !important;
+  overflow: hidden !important;
 }
